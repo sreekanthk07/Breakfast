@@ -4,6 +4,9 @@
 
 The Breakfast Ordering Website is designed to provide users with a seamless and convenient way to order breakfast online. This project aims to simplify the process of browsing, selecting, and purchasing breakfast items, ensuring a delightful start to the users' day.
 
+# demo url:
+# demo video url:
+
 # Project Team:
 
 Frontend Development: Sreekanth
