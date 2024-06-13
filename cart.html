@@ -231,6 +231,15 @@
         window.onload = function() {
             loadCart(); // Load cart items
         };
+
+           function showAddressForm() {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cartItems.length === 0) {
+        alert('Your cart is empty. Please add items to the cart before proceeding to checkout.');
+        return;
+    }
+    document.getElementById('address-form').style.display = 'block';
+}
     </script>
 </body>
 </html>
