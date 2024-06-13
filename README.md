@@ -1,10 +1,10 @@
-# Title :Breakfast Ordering Website
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/c85103b6-2458-4bf1-87ad-dbecc27e1484)# Title :Breakfast Ordering Website
 
 # Project Overview:
 
 The Breakfast Ordering Website is designed to provide users with a seamless and convenient way to order breakfast online. This project aims to simplify the process of browsing, selecting, and purchasing breakfast items, ensuring a delightful start to the users' day.
 
-# demo url:
+# demo url: https://happy-coast-0cbab720f.5.azurestaticapps.net
 # demo video url:
 
 # Project Team:
@@ -71,7 +71,37 @@ We welcome contributions from the community. Please follow these steps to contri
 
 ![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/bcdaa262-b616-4618-a36f-be24b0bfb615)
 
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/db9c1e20-4111-423b-98d2-10da59f6faf9)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/e4eb9c07-1922-412f-a689-6cecac65d39b)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/92366037-4303-4321-9d1d-4762b3f1a7d6)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/137c4439-ea8c-4150-8b78-babf2a6ff0c2)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/a91ac8be-f7c5-4da2-85a3-0bd68b4b6768)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/1da91ac7-11f8-4cd0-91ae-840970a84557)
 
 
 
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/48703eb1-90ec-4400-ba0c-69439b6fc044)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/ed733ff9-5d9c-42b7-838c-be331dfba960)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/4460ac4a-d7a0-4053-a959-6d175f459428)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/6eaacb67-3300-42eb-8de3-f52c8b427fe9)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/056f5e6a-51ed-4e23-a863-5334ab807e8e)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/f332a5c8-223f-4dc3-963a-d4f73c468d0a)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/064ef488-d410-4a88-8ed6-e575c6ea1cfc)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/53be6ec3-18d6-425c-a55b-b0ef29da2172)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/572ab6b2-038c-4755-977c-cae7644bb288)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/eb3760ec-0a92-4917-bdbe-8c61f007210c)
 
