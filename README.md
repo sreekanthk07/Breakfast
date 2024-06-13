@@ -1,4 +1,4 @@
-![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/c85103b6-2458-4bf1-87ad-dbecc27e1484)# Title :Breakfast Ordering Website
+# Title :Breakfast Ordering Website
 
 # Project Overview:
 
