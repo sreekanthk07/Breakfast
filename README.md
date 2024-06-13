@@ -67,6 +67,10 @@ The application is deployed on AWS, configured by Thiruvenkadam. For deployment,
 
 # Contributing
 We welcome contributions from the community. Please follow these steps to contribute:
+![Screenshot 2024-06-13 112815](https://github.com/sreekanthk07/Breakfast/assets/165758877/ac188670-bf8c-4259-b6ca-5bea83982a38)
+
+![image](https://github.com/sreekanthk07/Breakfast/assets/165758877/bcdaa262-b616-4618-a36f-be24b0bfb615)
+
 
 
 
