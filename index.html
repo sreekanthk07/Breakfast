@@ -7,17 +7,28 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            background-image: url('food.avif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             margin: 0;
             padding: 0;
+            height: 100vh; /* Ensure full viewport height coverage */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff; /* Text color */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
         }
         .container {
             max-width: 800px;
-            margin: 50px auto;
+            margin: 20px;
             padding: 20px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         header {
             text-align: center;
@@ -179,7 +190,10 @@
             window.location.href = 'login.html';
         }
 
-        window.onload = checkLogin;
+        window.onload = function() {
+            checkLogin();
+        };
     </script>
 </body>
 </html>
+
