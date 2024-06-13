@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breakfast Ordering - Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a, nav button {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        nav a:hover, nav button:hover {
+            color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .total {
+            text-align: right;
+            padding: 10px 0;
+        }
+        .checkout-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .checkout-btn:hover {
+            background-color: #555;
+        }
+        .address-form {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .address-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .address-form input[type="text"],
+        .address-form input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .address-form input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .address-form input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shopping Cart</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cart.html">Cart</a>
+            <button id="logout-button" onclick="logout()">Logout</button>
+        </nav>
+    </header>
+    <div class="container">
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Cart items will be dynamically loaded here -->
+            </tbody>
+        </table>
+        <div class="total">
+            <h3>Total: $<span id="cart-total">0.00</span></h3>
+        </div>
+        <button class="checkout-btn" onclick="showAddressForm()">Proceed to Checkout</button>
+
+        <div id="address-form" class="address-form" style="display: none;">
+            <h2>Enter Address Details</h2>
+            <form id="checkout-form" onsubmit="submitOrder(event)">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
+                <input type="submit" value="Place Order">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Sample data for demonstration
+        const items = [
+            { id: 'pancakes', name: 'Pancakes', price: 5 },
+            { id: 'waffles', name: 'Waffles', price: 7 }
+        ];
+
+        // Load cart items from localStorage
+        function loadCart() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            let total = 0;
+
+            // Clear existing table rows
+            cartItemsContainer.innerHTML = '';
+
+            // Add new rows for each item in the cart
+            cartItems.forEach(item => {
+                const itemTotal = item.quantity * item.price;
+                total += itemTotal;
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>$${item.price.toFixed(2)}</td>
+                    <td>$${itemTotal.toFixed(2)}</td>
+                    <td><button onclick="removeItem('${item.id}')">Remove</button></td>
+                `;
+                cartItemsContainer.appendChild(row);
+            });
+
+            // Update total
+            cartTotalElement.textContent = total.toFixed(2);
+        }
+
+        // Remove item from cart
+        function removeItem(itemId) {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Filter out the item to be removed
+            cartItems = cartItems.filter(item => item.id !== itemId);
+
+            // Save updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+
+            // Reload cart items
+            loadCart();
+        }
+
+        // Show address form on checkout button click
+        function showAddressForm() {
+            document.getElementById('address-form').style.display = 'block';
+        }
+
+        // Handle form submission for placing order
+        function submitOrder(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+
+            // You can add additional validation here
+
+            // Example: Logging order details (replace with actual logic)
+            console.log(`Order placed by ${name} with address ${address} and phone ${phone}`);
+
+            // Clear cart after order placed
+            localStorage.removeItem('cart');
+
+            // Redirect to order success page
+            window.location.href = 'order-success.html';
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            alert('Logout successful!');
+            window.location.href = 'login.html';
+        }
+
+        // On page load
+        window.onload = function() {
+            loadCart(); // Load cart items
+        };
+    </script>
+</body>
+</html>

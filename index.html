@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breakfast Ordering - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a, nav button {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        nav a:hover, nav button:hover {
+            color: #555;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .menu-item span {
+            flex: 1;
+            font-size: 18px;
+        }
+        .menu-item input {
+            width: 50px;
+            text-align: center;
+            margin: 0 10px;
+        }
+        .menu-item button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .menu-item button:hover {
+            background-color: #555;
+        }
+        .login-message {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Breakfast Ordering</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html" id="login-link">Login</a>
+            <a href="register.html" id="register-link">Register</a>
+            <a href="cart.html">Cart</a>
+            <button id="logout-button" style="display: none;" onclick="logout()">Logout</button>
+        </nav>
+    </header>
+    <div class="container">
+        <div id="login-message" class="login-message" style="display: none;">
+            <p>Please <a href="login.html">login</a> or <a href="register.html">register</a> to see the menu.</p>
+        </div>
+        <div id="menu-items" style="display: none;">
+            <h2>Menu</h2>
+            <div class="menu-item">
+                <span>Pancakes - $5</span>
+                <div>
+                    <button onclick="changeQuantity('pancakes', -1)">-</button>
+                    <input type="number" id="pancakes-quantity" value="0" min="0">
+                    <button onclick="changeQuantity('pancakes', 1)">+</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <span>Waffles - $7</span>
+                <div>
+                    <button onclick="changeQuantity('waffles', -1)">-</button>
+                    <input type="number" id="waffles-quantity" value="0" min="0">
+                    <button onclick="changeQuantity('waffles', 1)">+</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <span>Omelette - $6</span>
+                <div>
+                    <button onclick="changeQuantity('omelette', -1)">-</button>
+                    <input type="number" id="omelette-quantity" value="0" min="0">
+                    <button onclick="changeQuantity('omelette', 1)">+</button>
+                </div>
+            </div>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+    </div>
+
+    <script>
+        function changeQuantity(item, change) {
+            const input = document.getElementById(`${item}-quantity`);
+            let currentQuantity = parseInt(input.value);
+            currentQuantity += change;
+            if (currentQuantity < 0) {
+                currentQuantity = 0;
+            }
+            input.value = currentQuantity;
+        }
+
+        function addToCart() {
+            const items = [
+                { name: 'Pancakes', id: 'pancakes', price: 5 },
+                { name: 'Waffles', id: 'waffles', price: 7 },
+                { name: 'Omelette', id: 'omelette', price: 6 }
+            ];
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            items.forEach(item => {
+                const quantity = parseInt(document.getElementById(`${item.id}-quantity`).value);
+                if (quantity > 0) {
+                    const existingItem = cart.find(cartItem => cartItem.id === item.id);
+                    if (existingItem) {
+                        existingItem.quantity += quantity;
+                    } else {
+                        cart.push({ ...item, quantity });
+                    }
+                }
+            });
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert('Items added to cart!');
+            window.location.href = 'cart.html';
+        }
+
+        function checkLogin() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const loginMessage = document.getElementById('login-message');
+            const menuItems = document.getElementById('menu-items');
+            const loginLink = document.getElementById('login-link');
+            const registerLink = document.getElementById('register-link');
+            const logoutButton = document.getElementById('logout-button');
+
+            if (isLoggedIn) {
+                menuItems.style.display = 'block';
+                loginMessage.style.display = 'none';
+                loginLink.style.display = 'none';
+                registerLink.style.display = 'none';
+                logoutButton.style.display = 'inline';
+            } else {
+                loginMessage.style.display = 'block';
+                menuItems.style.display = 'none';
+                loginLink.style.display = 'inline';
+                registerLink.style.display = 'inline';
+                logoutButton.style.display = 'none';
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            alert('Logout successful!');
+            window.location.href = 'login.html';
+        }
+
+        window.onload = checkLogin;
+    </script>
+</body>
+</html>
